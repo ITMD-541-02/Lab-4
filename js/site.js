@@ -16,17 +16,18 @@ let weather = {
         const { dayhour } = data.currentConditions;
         const { iconURL } = data.currentConditions;
         const { c } = data.currentConditions.temp;
+        const { precip } = data.currentConditions;
         const { humidity } = data.currentConditions;
         const { mile } = data.currentConditions.wind;
+        const { comment } = data.currentConditions;
         document.querySelector(".city").innerText = "Weather in " + region;
         document.querySelector(".dayhour").innerHTML = dayhour;
         document.querySelector(".icon").src = iconURL;
         document.querySelector(".temp").innerText = c + "°C";
-        document.querySelector(".humidity").innerText =
-            "Humidity: " + humidity;
-        document.querySelector(".wind").innerText =
-            "Wind speed: " + mile + " mph";
-        document.querySelector(".weather").classList.remove("loading");
+        document.querySelector(".precip").innerHTML = precip;
+        document.querySelector(".comment").innerHTML = comment;
+        document.querySelector(".humidity").innerText = "Humidity: " + humidity;
+        document.querySelector(".wind").innerText = "Wind speed: " + mile + " mph";
     },
     search: function () {
         this.fetchWeather(document.querySelector(".search-bar").value);
@@ -45,4 +46,4 @@ document
         }
     });
 
-weather.fetchWeather("Denver");
+weather.fetchWeather("chicago");
