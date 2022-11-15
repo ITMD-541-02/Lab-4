@@ -12,22 +12,29 @@ let weather = {
             .then((data) => this.displayWeather(data));
     },
     displayWeather: function (data) {
+        /* For the current day */
         const { region } = data;
-        const { dayhour } = data.currentConditions;
-        const { iconURL } = data.currentConditions;
+        const { dayhour, iconURL, precip, humidity, comment } = data.currentConditions;
         const { c } = data.currentConditions.temp;
-        const { precip } = data.currentConditions;
-        const { humidity } = data.currentConditions;
         const { mile } = data.currentConditions.wind;
-        const { comment } = data.currentConditions;
+
+        /* For the next days */
+        const { day } = data.next_days[day];
+        const { comment1 } = data.next_days;
+
+        /* For the current day */
         document.querySelector(".city").innerText = "Weather in " + region;
         document.querySelector(".dayhour").innerHTML = dayhour;
         document.querySelector(".icon").src = iconURL;
         document.querySelector(".temp").innerText = c + "°C";
-        document.querySelector(".precip").innerHTML = precip;
+        document.querySelector(".precip").innerHTML = "Precipitation: " + precip;
         document.querySelector(".comment").innerHTML = comment;
         document.querySelector(".humidity").innerText = "Humidity: " + humidity;
         document.querySelector(".wind").innerText = "Wind speed: " + mile + " mph";
+
+        /* For the next days */
+        document.querySelector(".day").innerHTML = day;
+        document.querySelector(".comment1").innerHTML = comment1;
     },
     search: function () {
         this.fetchWeather(document.querySelector(".search-bar").value);
