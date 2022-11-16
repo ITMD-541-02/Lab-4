@@ -39,4 +39,10 @@ img {
 
 .weekforecast {
     display: flex;
+    padding-top: 50px;
+    line-height: 25px;
+}
+
+.dayblock {
+    padding: 20px;
 }
