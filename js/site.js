@@ -90,6 +90,18 @@ let weather = {
 
         iconURL = data.next_days[1].iconURL;
         document.querySelector(".icon1").src = iconURL;
+        iconURL = data.next_days[2].iconURL;
+        document.querySelector(".icon2").src = iconURL;
+        iconURL = data.next_days[3].iconURL;
+        document.querySelector(".icon3").src = iconURL;
+        iconURL = data.next_days[4].iconURL;
+        document.querySelector(".icon4").src = iconURL;
+        iconURL = data.next_days[5].iconURL;
+        document.querySelector(".icon5").src = iconURL;
+        iconURL = data.next_days[6].iconURL;
+        document.querySelector(".icon6").src = iconURL;
+        iconURL = data.next_days[7].iconURL;
+        document.querySelector(".icon7").src = iconURL;
 
     },
     search: function () {
