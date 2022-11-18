@@ -7,7 +7,7 @@ body {
 }
 
 .card {
-    background: #282a2bd0;
+    background-color: #282a2bd0;
     padding: 2em;
     border-radius: 30px;
     width: 100%;
@@ -51,7 +51,7 @@ img {
 }
 
 .block {
-    background-color: rgb(46, 49, 49);
+    background-color: #282a2bd0;
     width: 120px;
     padding: 15px;
     border-radius: 25px;
