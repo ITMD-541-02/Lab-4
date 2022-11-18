@@ -103,6 +103,9 @@ let weather = {
         iconURL = data.next_days[7].iconURL;
         document.querySelector(".icon7").src = iconURL;
 
+        document.body.style.backgroundImage =
+            "url('https://source.unsplash.com/1920x1080/?" + region + "')";
+
     },
     search: function () {
         this.fetchWeather(document.querySelector(".search-bar").value);
