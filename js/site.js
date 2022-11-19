@@ -16,6 +16,7 @@ let weather = {
         var { dayhour, iconURL, precip, humidity, comment } = data.currentConditions;
         var { c } = data.currentConditions.temp;
         var { km } = data.currentConditions.wind;
+        var media = window.matchMedia("(max-width: 650px)");
 
         /* For the current day */
         document.querySelector(".city").innerText = "Weather in " + region;
@@ -102,8 +103,14 @@ let weather = {
         iconURL = data.next_days[7].iconURL;
         document.querySelector(".icon7").src = iconURL;
 
-        document.body.style.backgroundImage =
-            "url('https://source.unsplash.com/1920x1080/?" + region + "')";
+        if (media.matches) {
+            document.body.style.backgroundImage =
+                "url('https://source.unsplash.com/500x2600/?" + region + "')";
+        }
+        else {
+            document.body.style.backgroundImage =
+                "url('https://source.unsplash.com/1920x1080/?" + region + "')";
+        }
 
     },
     search: function () {
