@@ -1,5 +1,4 @@
 let weather = {
-    apiKey: "API KEY GOES HERE",
     fetchWeather: function (city) {
         fetch("https://weatherdbi.herokuapp.com/data/weather/" + city)
             .then((response) => {

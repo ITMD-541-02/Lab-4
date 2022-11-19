@@ -18,6 +18,14 @@ body {
     margin: 1em;
 }
 
+.banner {
+    background-color: #0c0c0cd0;
+    padding: 1em;
+    border-radius: 30px;
+    height: 50px;
+    text-align: center;
+}
+
 .search {
     display: flex;
     align-items: center;
