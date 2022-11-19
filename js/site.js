@@ -3,7 +3,7 @@ let weather = {
     fetchWeather: function (city) {
         fetch("https://weatherdbi.herokuapp.com/data/weather/" + city)
             .then((response) => {
-                if (!response.ok) {
+                if (!response.ok) { /* Error trapping but doesn't work properly */
                     alert("No weather found.");
                     throw new Error("No weather found.");
                 }
@@ -16,7 +16,7 @@ let weather = {
         var { region } = data;
         var { dayhour, iconURL, precip, humidity, comment } = data.currentConditions;
         var { c } = data.currentConditions.temp;
-        var { mile } = data.currentConditions.wind;
+        var { km } = data.currentConditions.wind;
 
         /* For the current day */
         document.querySelector(".city").innerText = "Weather in " + region;
@@ -26,7 +26,7 @@ let weather = {
         document.querySelector(".precip").innerHTML = "Precipitation: " + precip;
         document.querySelector(".comment").innerHTML = comment;
         document.querySelector(".humidity").innerText = "Humidity: " + humidity;
-        document.querySelector(".wind").innerText = "Wind speed: " + mile + " mph";
+        document.querySelector(".wind").innerText = "Wind speed: " + km + " kmh";
 
         var { day } = data.next_days[1];
         document.querySelector(".day1").innerHTML = day;

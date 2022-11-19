@@ -4,10 +4,13 @@ body {
     align-items: center;
     flex-direction: column;
     background-image: url('https://source.unsplash.com/1920x1080/?chicago');
+    font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
+    color: wheat;
+    font-weight: 750;
 }
 
 .card {
-    background-color: #282a2bd0;
+    background-color: #0c0c0cd0;
     padding: 2em;
     border-radius: 30px;
     width: 100%;
@@ -24,13 +27,27 @@ body {
 input.search-bar {
     border: none;
     outline: none;
-    padding: 0.5em 1em;
+    padding: 0.4em 1em;
+    border-radius: 24px;
+    background: #7c7c7c2b;
+    color: white;
+    font-family: inherit;
+    font-size: 105%;
+    font-weight: 700;
+    width: calc(100% - 100px);
 }
 
 button {
     margin: .5em;
     border-radius: 50%;
     border: none;
+    height: 44px;
+    width: 44px;
+    outline: none;
+    background: #7c7c7c2b;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
 }
 
 img {
@@ -51,8 +68,21 @@ img {
 }
 
 .block {
-    background-color: #282a2bd0;
-    width: 120px;
+    background-color: #0c0c0cd0;
+    width: 150px;
     padding: 15px;
     border-radius: 25px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.comment {
+    padding-left: 10px;
+}
+
+.height {
+    line-height: 1.5em;
 }
