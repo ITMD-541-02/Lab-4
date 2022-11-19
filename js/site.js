@@ -1,4 +1,5 @@
 let weather = {
+    apiKey: "API KEY GOES HERE",
     fetchWeather: function (city) {
         fetch("https://weatherdbi.herokuapp.com/data/weather/" + city)
             .then((response) => {
@@ -109,10 +110,11 @@ let weather = {
     search: function () {
         this.fetchWeather(document.querySelector(".search-bar").value);
     },
-
-    geosearch: function () {
-        this.fetchWeather(cord);
-    },
+    /*
+        geosearch: function () {
+            this.fetchWeather(cord);
+        },
+        */
 };
 
 document.querySelector(".search button").addEventListener("click", function () {
@@ -133,6 +135,7 @@ document
 
 weather.fetchWeather("chicago");
 
+/*
 (function () {
     navigator.geolocation.getCurrentPosition(function (position) {
         var lat = position.coords.latitude;
@@ -145,3 +148,5 @@ weather.fetchWeather("chicago");
             console.log("The Locator was denied. :(")
         })
 })();
+
+*/

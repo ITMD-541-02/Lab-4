@@ -41,7 +41,7 @@ button {
     margin: .5em;
     border-radius: 50%;
     border: none;
-    height: 44px;
+    height: 40px;
     width: 44px;
     outline: none;
     background: #7c7c7c2b;
@@ -88,11 +88,12 @@ img {
 }
 
 @media screen and (max-width: 650px) {
-    .block {
-        background-color: #db0e0ed0;
-        width: 150px;
-        padding: 15px;
-        border-radius: 25px;
+    .card {
+        width: 70%;
+        max-width: 420px;
     }
 
+    .weekforecast {
+        flex-direction: column;
+    }
 }
