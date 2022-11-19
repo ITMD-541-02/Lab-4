@@ -86,3 +86,13 @@ img {
 .height {
     line-height: 1.5em;
 }
+
+@media screen and (max-width: 650px) {
+    .block {
+        background-color: #db0e0ed0;
+        width: 150px;
+        padding: 15px;
+        border-radius: 25px;
+    }
+
+}
