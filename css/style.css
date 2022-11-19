@@ -104,4 +104,8 @@ img {
     .weekforecast {
         flex-direction: column;
     }
+
+    body {
+        background-image: url('https://source.unsplash.com/500x2550/?chicago');
+    }
 }
