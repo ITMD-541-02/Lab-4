@@ -1,22 +1,35 @@
 let weather = {
     fetchWeather: function (city) {
-        fetch("https://weatherdbi.herokuapp.com/data/weather/" + city)
-            .then((response) => {
-                if (!response.ok) { /* Error trapping but doesn't work properly */
-                    alert("No weather found.");
-                    throw new Error("No weather found.");
-                }
-                return response.json();
-            })
-            .then((data) => this.displayWeather(data));
+        if (city == "") { //Error for blank search
+            alert("No weather found.");
+            throw new Error("No weather found.");
+        }
+        else {
+            fetch("https://weatherdbi.herokuapp.com/data/weather/" + city)
+                .then((response) => {
+                    if (!response.ok) {
+                        alert("No weather found.");
+                        throw new Error("No weather found.");
+                    }
+                    return response.json();
+                })
+                .then((data) => this.displayWeather(data));
+        }
     },
     displayWeather: function (data) {
         /* For the current day */
+        var { status } = data;
+        if (status == "fail") { //Check for the weatherdbi if random entry is typed, search for fail status
+            alert("No weather found.");
+            throw new Error("No weather found.");
+        }
+
         var { region } = data;
         var { dayhour, iconURL, precip, humidity, comment } = data.currentConditions;
         var { c } = data.currentConditions.temp;
         var { km } = data.currentConditions.wind;
-        var media = window.matchMedia("(max-width: 650px)");
+        var media = window.matchMedia("(max-width: 650px)"); //For media, acts for the background image
+
 
         /* For the current day */
         document.querySelector(".city").innerText = "Weather in " + region;
