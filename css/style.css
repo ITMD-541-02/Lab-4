@@ -108,4 +108,8 @@ img {
     body {
         background-image: url('https://source.unsplash.com/450x2800/?chicago');
     }
+
+    .weekforecast {
+        padding-top: 0px;
+    }
 }
