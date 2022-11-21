@@ -57,6 +57,7 @@ let weather = {
             document.querySelector(".icon" + i + "").src = iconURL;
         }
 
+        //Use for the case of mobile devices getting accurate background images
         if (media.matches) {
             document.body.style.backgroundImage =
                 "url('https://source.unsplash.com/500x2600/?" + region + "')";
@@ -71,6 +72,7 @@ let weather = {
         this.fetchWeather(document.querySelector(".search-bar").value);
     },
 
+    //uses combined coords to put in the search 
     geosearch: function (area) {
         this.fetchWeather(area);
 
@@ -78,6 +80,7 @@ let weather = {
 
 };
 
+//Runs to find current position and storing it in
 const findMyLocation = () => {
     const success = (position) => {
         console.log(position)
@@ -99,9 +102,10 @@ document.querySelector(".search button").addEventListener("click", function () {
     weather.search();
 });
 
+//Runs if geo button is pressed
 document.querySelector(".search .geo").addEventListener("click", findMyLocation);
 
-document
+document //Allows user to hit enter to search
     .querySelector(".search-bar")
     .addEventListener("keyup", function (event) {
         if (event.key == "Enter") {
@@ -109,20 +113,5 @@ document
         }
     });
 
+//Default weather page 
 weather.fetchWeather("chicago");
-
-/*
-(function () {
-    navigator.geolocation.getCurrentPosition(function (position) {
-        var lat = position.coords.latitude;
-        var long = position.coords.longitude;
-        var cord = "" + lat + "," + long + "";
-        console.log(cord);
-        return cord;
-    },
-        function (error) {
-            console.log("The Locator was denied. :(")
-        })
-})();
-
-*/
