@@ -42,79 +42,20 @@ let weather = {
         document.querySelector(".wind").innerText = "Wind speed: " + km + " kmh";
 
         var { day } = data.next_days[1];
-        document.querySelector(".day1").innerHTML = day;
-        day = data.next_days[2].day;
-        document.querySelector(".day2").innerHTML = day;
-        day = data.next_days[3].day;
-        document.querySelector(".day3").innerHTML = day;
-        day = data.next_days[4].day;
-        document.querySelector(".day4").innerHTML = day;
-        day = data.next_days[5].day;
-        document.querySelector(".day5").innerHTML = day;
-        day = data.next_days[6].day;
-        document.querySelector(".day6").innerHTML = day;
-        day = data.next_days[7].day;
-        document.querySelector(".day7").innerHTML = day;
 
-        comment = data.next_days[1].comment;
-        document.querySelector(".comment1").innerHTML = comment;
-        comment = data.next_days[2].comment;
-        document.querySelector(".comment2").innerHTML = comment;
-        comment = data.next_days[3].comment;
-        document.querySelector(".comment3").innerHTML = comment;
-        comment = data.next_days[4].comment;
-        document.querySelector(".comment4").innerHTML = comment;
-        comment = data.next_days[5].comment;
-        document.querySelector(".comment5").innerHTML = comment;
-        comment = data.next_days[6].comment;
-        document.querySelector(".comment6").innerHTML = comment;
-        comment = data.next_days[7].comment;
-        document.querySelector(".comment7").innerHTML = comment;
-
-        c = data.next_days[1].max_temp.c;
-        document.querySelector(".max_temp1").innerHTML = c + "°C";
-        c = data.next_days[2].max_temp.c;
-        document.querySelector(".max_temp2").innerHTML = c + "°C";
-        c = data.next_days[3].max_temp.c;
-        document.querySelector(".max_temp3").innerHTML = c + "°C";
-        c = data.next_days[4].max_temp.c;
-        document.querySelector(".max_temp4").innerHTML = c + "°C";
-        c = data.next_days[5].max_temp.c;
-        document.querySelector(".max_temp5").innerHTML = c + "°C";
-        c = data.next_days[6].max_temp.c;
-        document.querySelector(".max_temp6").innerHTML = c + "°C";
-        c = data.next_days[7].max_temp.c;
-        document.querySelector(".max_temp7").innerHTML = c + "°C";
-
-        c = data.next_days[1].min_temp.c;
-        document.querySelector(".min_temp1").innerHTML = c + "°C";
-        c = data.next_days[2].min_temp.c;
-        document.querySelector(".min_temp2").innerHTML = c + "°C";
-        c = data.next_days[3].min_temp.c;
-        document.querySelector(".min_temp3").innerHTML = c + "°C";
-        c = data.next_days[4].min_temp.c;
-        document.querySelector(".min_temp4").innerHTML = c + "°C";
-        c = data.next_days[5].min_temp.c;
-        document.querySelector(".min_temp5").innerHTML = c + "°C";
-        c = data.next_days[6].min_temp.c;
-        document.querySelector(".min_temp6").innerHTML = c + "°C";
-        c = data.next_days[7].min_temp.c;
-        document.querySelector(".min_temp7").innerHTML = c + "°C";
-
-        iconURL = data.next_days[1].iconURL;
-        document.querySelector(".icon1").src = iconURL;
-        iconURL = data.next_days[2].iconURL;
-        document.querySelector(".icon2").src = iconURL;
-        iconURL = data.next_days[3].iconURL;
-        document.querySelector(".icon3").src = iconURL;
-        iconURL = data.next_days[4].iconURL;
-        document.querySelector(".icon4").src = iconURL;
-        iconURL = data.next_days[5].iconURL;
-        document.querySelector(".icon5").src = iconURL;
-        iconURL = data.next_days[6].iconURL;
-        document.querySelector(".icon6").src = iconURL;
-        iconURL = data.next_days[7].iconURL;
-        document.querySelector(".icon7").src = iconURL;
+        //For loop to output next 7 days
+        for (let i = 1; i < 8; i++) {
+            day = data.next_days[i].day;
+            document.querySelector(".day" + i + "").innerHTML = day;
+            comment = data.next_days[i].comment;
+            document.querySelector(".comment" + i + "").innerHTML = comment;
+            c = data.next_days[i].max_temp.c;
+            document.querySelector(".max_temp" + i + "").innerHTML = c + "°C";
+            c = data.next_days[i].min_temp.c;
+            document.querySelector(".min_temp" + i + "").innerHTML = c + "°C";
+            iconURL = data.next_days[i].iconURL;
+            document.querySelector(".icon" + i + "").src = iconURL;
+        }
 
         if (media.matches) {
             document.body.style.backgroundImage =
@@ -129,20 +70,36 @@ let weather = {
     search: function () {
         this.fetchWeather(document.querySelector(".search-bar").value);
     },
-    /*
-        geosearch: function () {
-            this.fetchWeather(cord);
-        },
-        */
+
+    geosearch: function (area) {
+        this.fetchWeather(area);
+
+    },
+
 };
+
+const findMyLocation = () => {
+    const success = (position) => {
+        console.log(position)
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        var location = latitude + "," + longitude + "";
+        console.log("" + latitude + "," + longitude + "")
+        weather.geosearch(location);
+    }
+
+    const error = () => {
+        alert("Unable to retrieve your location")
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error);
+}
 
 document.querySelector(".search button").addEventListener("click", function () {
     weather.search();
 });
 
-document.querySelector(".search button.geo").addEventListener("click", function () {
-    weather.geosearch();
-});
+document.querySelector(".search .geo").addEventListener("click", findMyLocation);
 
 document
     .querySelector(".search-bar")
